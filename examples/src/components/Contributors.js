@@ -48,25 +48,22 @@ const Contributors = createClass({
 			callback(null, data);
 		}, ASYNC_DELAY);
 	},
-	gotoContributor (value, event) {
-		window.open('https://github.com/' + value.github);
-	},
+
 	render () {
 		return (
 			<div className="section">
-				<h3 className="section-heading">{this.props.label}  <a href="https://github.com/JedWatson/react-select/tree/master/examples/src/components/Contributors.js">(Source)</a></h3>
-				<Select.Async multi={this.state.multi} value={this.state.value} onChange={this.onChange} onValueClick={this.gotoContributor} valueKey="github" labelKey="name" loadOptions={this.getContributors} />
+				<h3 className="section-heading">{this.props.label}</h3>
+				<Select.Async multi={this.state.multi} value={this.state.value} onChange={this.onChange}  valueKey="github" labelKey="name" loadOptions={this.getContributors} />
 				<div className="checkbox-list">
 					<label className="checkbox">
 						<input type="radio" className="checkbox-control" checked={this.state.multi} onChange={this.switchToMulti}/>
-						<span className="checkbox-label">Multiselect</span>
+						<span className="checkbox-label">Or</span>
 					</label>
 					<label className="checkbox">
 						<input type="radio" className="checkbox-control" checked={!this.state.multi} onChange={this.switchToSingle}/>
-						<span className="checkbox-label">Single Value</span>
+						<span className="checkbox-label">And</span>
 					</label>
 				</div>
-				<div className="hint">This example implements custom label and value properties, async options and opens the github profiles in a new window when values are clicked</div>
 			</div>
 		);
 	}
